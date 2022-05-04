@@ -1,4 +1,4 @@
-# Urban_Growth_of_GBN_BigData_Project
+# Urban_Growth_of_GBN(Gautam Buddha Nagar)_BigData_Project
 
 "Assets" folder:
 1) 1992_to_2002.tif shows the decadal change between the years 1992-2002
