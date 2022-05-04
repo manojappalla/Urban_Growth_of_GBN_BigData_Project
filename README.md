@@ -13,6 +13,11 @@
 
 *IMPORT REQUIRED FILES FROM THE ASSETS FOLDER INTO ASSETS OF GEE DEPENDING ON THE REQUIREMENT
 
+/* classification.js */
+This javascript file contains the code to apply random forest classification, to find the area of each class, and to export the classified image to google drive.
 
+/* change detection.js */
+This javascript file contains the code to perform change detection using the change matrix method and to calculate the area of class to class change. This also contains the code to export the image after performing the change detection
 
-
+/* dashboard.js */
+This code is used to create the dashboard
