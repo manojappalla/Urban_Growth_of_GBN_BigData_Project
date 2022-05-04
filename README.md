@@ -21,3 +21,6 @@ This javascript file contains the code to perform change detection using the cha
 
 /* dashboard.js */
 This code is used to create the dashboard
+
+/* download.js */
+This javascript file contains the code to filter the landsat collection and export the images by calculating the median of all the images in the collection.
