@@ -242,7 +242,61 @@ nightlight_link.style().set({
 nightlight_link.setUrl('https://youtu.be/yxYkYE9-rWo'); // This opens up youtube link to view the nightlights GIF
 
 // Define Chart element
-var chart = ui.Chart();
+var chart_1992 = ui.Chart.array.values(areas_1992, 0, class_names).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Classes'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area by class 1992',
+                    legend: { position: "none" }
+                  });
+
+var chart_2002 = ui.Chart.array.values(areas_2002, 0, class_names).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Classes'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area by class in 2002',
+                    legend: { position: "none" }
+                  });
+                  
+var chart_2013 = ui.Chart.array.values(areas_2013, 0, class_names).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Classes'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area by class in 2013',
+                    legend: { position: "none" }
+                  });
+                  
+var chart_2022 = ui.Chart.array.values(areas_2022, 0, class_names).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Classes'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area by class in 2022',
+                    legend: { position: "none" }
+                  });
+                  
+var chart_1992_2002 = ui.Chart.array.values(area_change_1992_2002, 0, area_change_classes).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Class-Urban'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area change from each class to Urban from 1992-2002',
+                    legend: { position: "none" }
+                  });
+                  
+var chart_2002_2013 = ui.Chart.array.values(area_change_2002_2013, 0, area_change_classes).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Class-Urban'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area change from each class to Urban from 2002-2013',
+                    legend: { position: "none" }
+                  });
+                  
+var chart_2013_2022 = ui.Chart.array.values(area_change_2013_2022, 0, area_change_classes).setChartType('ColumnChart')
+                    .setOptions({
+                    hAxis: {title: 'Class-Urban'},
+                    vAxis: {title: 'Area Km2'},
+                    title: 'Area change from each class to Urban from 2013-2022',
+                    legend: { position: "none" }
+                  });
 
 //--------------------------------------------------------------------------------------------------
 
@@ -254,66 +308,45 @@ var lulc_selection = ui.Select({
   onChange: function(key){
     if(key === 'LULC 1992'){
       main_map.clear();
-      panel.remove(chart);
+      panel.remove(chart_2002);
+      panel.remove(chart_2013);
+      panel.remove(chart_2022);
       main_map.addLayer(lulc['LULC 1992'].clip(boundary), imageVisParam, 'LULC 1992');
       main_map.add(legend_panel);
-      chart = ui.Chart.array.values(areas_1992, 0, class_names).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Classes'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area by class 1992',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+      panel.add(chart_1992);
     }
     
     if(key === 'LULC 2002'){
       main_map.clear();
-      panel.remove(chart);
+      panel.remove(chart_1992);
+      panel.remove(chart_2013);
+      panel.remove(chart_2022);
       main_map.addLayer(lulc['LULC 2002'].clip(boundary), imageVisParam, 'LULC 2002');
       main_map.add(legend_panel);
-      chart = ui.Chart.array.values(areas_2002, 0, class_names).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Classes'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area by class in 2002',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+
+      panel.add(chart_2002);
     }
     
     if(key === 'LULC 2013'){
       main_map.clear();
-      panel.remove(chart);
+      panel.remove(chart_1992);
+      panel.remove(chart_2002);
+      panel.remove(chart_2022);
       main_map.addLayer(lulc['LULC 2013'].clip(boundary), imageVisParam, 'LULC 2013');
       main_map.add(legend_panel);
-      chart = ui.Chart.array.values(areas_2013, 0, class_names).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Classes'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area by class in 2013',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+
+      panel.add(chart_2013);
     }
     
     if(key === 'LULC 2022'){
       main_map.clear();
-      panel.remove(chart);
+      panel.remove(chart_1992);
+      panel.remove(chart_2002);
+      panel.remove(chart_2013)
       main_map.addLayer(lulc['LULC 2022'].clip(boundary), imageVisParam, 'LULC 2022');
       main_map.add(legend_panel);
-      chart = ui.Chart.array.values(areas_2022, 0, class_names).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Classes'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area by class in 2022',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+
+      panel.add(chart_2022);
     }
   }
   
@@ -335,66 +368,48 @@ var lulc_change_selection = ui.Select({
       main_map.clear();
       legend_change_panel.remove(thumb_2013_2022)
       legend_change_panel.remove(thumb_2002_2013)
-      panel.remove(chart)
+      panel.remove(chart_2002_2013)
+      panel.remove(chart_2013_2022)
       main_map.addLayer(lulc_change['LULC 1992-2002'].clip(boundary), imageVisParam_change, 'LULC 1992-2002');
       
       // create legend for the LULC Change images
       legend_change_panel.add(thumb_1992_2002)
       main_map.add(legend_change_panel)
       
-      chart = ui.Chart.array.values(area_change_1992_2002, 0, area_change_classes).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Class-Urban'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area change from each class to Urban from 1992-2002',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+
+      panel.add(chart_1992_2002);
     }
     
     if(key === 'LULC 2002-2013'){
       main_map.clear();
       legend_change_panel.remove(thumb_1992_2002)
       legend_change_panel.remove(thumb_2013_2022)
-      panel.remove(chart)
+      panel.remove(chart_1992_2002)
+      panel.remove(chart_2013_2022)
       main_map.addLayer(lulc_change['LULC 2002-2013'].clip(boundary), imageVisParam_change, 'LULC 2002-2013');
       
       // create legend for the LULC Change images
       legend_change_panel.add(thumb_2002_2013)
       main_map.add(legend_change_panel)
       
-      chart = ui.Chart.array.values(area_change_2002_2013, 0, area_change_classes).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Class-Urban'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area change from each class to Urban from 2002-2013',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+
+      panel.add(chart_2002_2013);
     }
     
     if(key === 'LULC 2013-2022'){
       main_map.clear();
       legend_change_panel.remove(thumb_1992_2002)
       legend_change_panel.remove(thumb_2002_2013)
-      panel.remove(chart)
+      panel.remove(chart_1992_2002)
+      panel.remove(chart_2002_2013)
       main_map.addLayer(lulc_change['LULC 2013-2022'].clip(boundary), imageVisParam_change, 'LULC 2013-2022');
       
       // create legend for the LULC Change images
       legend_change_panel.add(thumb_2013_2022);
       main_map.add(legend_change_panel);
       
-      chart = ui.Chart.array.values(area_change_2013_2022, 0, area_change_classes).setChartType('ColumnChart')
-                    .setOptions({
-                    hAxis: {title: 'Class-Urban'},
-                    vAxis: {title: 'Area Km2'},
-                    title: 'Area change from each class to Urban from 2013-2022',
-                    legend: { position: "none" }
-                  });
-      
-      panel.add(chart);
+
+      panel.add(chart_2013_2022);
     }
   }
 });
@@ -413,7 +428,13 @@ var options_selection = ui.Select({
   onChange: function(key){
     if(key === 'LULC'){
       main_map.clear();
-      panel.remove(chart)
+      panel.remove(chart_1992)
+      panel.remove(chart_2002)
+      panel.remove(chart_2013)
+      panel.remove(chart_2022)
+      panel.remove(chart_1992_2002)
+      panel.remove(chart_2002_2013)
+      panel.remove(chart_2013_2022);
       panel.remove(lulc_change_label);
       panel.remove(nightlight_timelapse_label);
       panel.remove(nightlight_link);
@@ -425,39 +446,54 @@ var options_selection = ui.Select({
     }
     else if(key === 'LULC Change'){
       main_map.clear();
-      panel.remove(chart)
+      panel.remove(chart_1992)
+      panel.remove(chart_2002)
+      panel.remove(chart_2013)
+      panel.remove(chart_2022)
+      panel.remove(chart_1992_2002)
+      panel.remove(chart_2002_2013)
+      panel.remove(chart_2013_2022);
       panel.remove(lulc_label);
       panel.remove(nightlight_timelapse_label);
       panel.remove(nightlight_link);
       panel.remove(swipe_label);
       panel.add(lulc_change_label);
-      panel.remove(chart);
       panel.remove(lulc_selection);
       ui.root.widgets().reset([panel, main_map]);
       panel.add(lulc_change_selection);
     }
     else if (key === 'Night Lights Timelapse'){
       main_map.clear();
-      panel.remove(chart)
+      panel.remove(chart_1992)
+      panel.remove(chart_2002)
+      panel.remove(chart_2013)
+      panel.remove(chart_2022)
+      panel.remove(chart_1992_2002)
+      panel.remove(chart_2002_2013)
+      panel.remove(chart_2013_2022);
       panel.remove(lulc_label);
       panel.remove(lulc_change_label);
       panel.remove(swipe_label);
       panel.add(nightlight_timelapse_label);
       panel.add(nightlight_link)
-      panel.remove(chart);
       panel.remove(lulc_selection);
       ui.root.widgets().reset([panel, main_map]);
       panel.remove(lulc_change_selection);
     }
     else if (key === 'Swipe'){
       main_map.clear();
-      panel.remove(chart)
+      panel.remove(chart_1992)
+      panel.remove(chart_2002)
+      panel.remove(chart_2013)
+      panel.remove(chart_2022)
+      panel.remove(chart_1992_2002)
+      panel.remove(chart_2002_2013)
+      panel.remove(chart_2013_2022);
       panel.remove(lulc_label);
       panel.remove(lulc_change_label);
       panel.remove(nightlight_timelapse_label);
       panel.remove(nightlight_link);
       panel.add(swipe_label);
-      panel.remove(chart);
       panel.remove(lulc_selection);
       panel.remove(lulc_change_selection);
       
