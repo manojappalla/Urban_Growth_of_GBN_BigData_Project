@@ -1,4 +1,4 @@
-# Urban_Growth_of_GBN_BigData_Project
+# Urban_Growth_of_GBN(Gautam Buddha Nagar)_BigData_Project
 
 "Assets" folder:
 1) 1992_to_2002.tif shows the decadal change between the years 1992-2002
@@ -21,3 +21,6 @@ This javascript file contains the code to perform change detection using the cha
 
 /* dashboard.js */
 This code is used to create the dashboard
+
+/* download.js */
+This javascript file contains the code to filter the landsat collection and export the images by calculating the median of all the images in the collection.
