@@ -20,6 +20,8 @@ Note:
 1) Can change the boundary
 2) Can change image collection within the Landsat or some other satellite image collection can be chosen (Acoordingly the scale should be adjusted)
 3) If choosing an algorithm other than smileRandomForest, look for the documentation of google earth engine to find out how to use the chosen algorithm.
+4) No of classes/level of classification can be changed and accordingly training samples should be generated (Look for line of code containing having the geometries and change them accordingly). Classified image visualization parameters can be changed accrodingly.
+5) To modify dashboard one can make necessary changes with the help of google earth engine documentation.
 
 "Assets" folder:
 1) 1992_to_2002.tif shows the decadal change between the years 1992-2002
