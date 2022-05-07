@@ -139,3 +139,59 @@ for(var a = 1; a <= 5; a++){
  
   print('ID' + a + ' ' + 'km2', calculation, ee.Number(calculation.values().get(0)).divide(1e6));
 }
+
+//-------------------------------------------SVM Classifier--------------------------------------------
+var classifier_svm= ee.Classifier.libsvm().train({
+  features: total_sample,
+  classProperty: 'id',
+  inputProperties: bands
+});
+
+var classification_1992_svm = image_1992.clip(boundary).select(bands).classify(classifier_svm);
+Map.addLayer(classification_1992_svm.clip(boundary), imageVisParam, 'Classified 1992 svm');
+
+var svmClassifier = ee.Classifier.libsvm().train({
+  features: training,
+  classProperty: 'id',
+  inputProperties: bands
+});
+
+var confusionMatrix_svm = ee.ConfusionMatrix(validation.classify(svmClassifier).errorMatrix({
+  actual:'id',
+  predicted:'classification'
+}))
+
+print('Confusion Matrix',confusionMatrix_svm);
+print('Overall Accuracy',confusionMatrix_svm.accuracy());
+print('Kappa', confusionMatrix_svm.kappa());
+
+
+//-----------------------------------------END---------------------------------------------------------------
+
+//-------------------------------------------CART Classifier--------------------------------------------
+var classifier_cart= ee.Classifier.smileCart(10).train({
+  features: total_sample,
+  classProperty: 'id',
+  inputProperties: bands
+});
+
+var classification_1992_cart = image_1992.clip(boundary).select(bands).classify(classifier_cart);
+Map.addLayer(classification_1992_cart.clip(boundary), imageVisParam, 'Classified 1992 cart');
+
+var cartClassifier = ee.Classifier.smileCart(10).train({
+  features: training,
+  classProperty: 'id',
+  inputProperties: bands
+});
+
+var confusionMatrix_cart = ee.ConfusionMatrix(validation.classify(cartClassifier).errorMatrix({
+  actual:'id',
+  predicted:'classification'
+}))
+
+print('Confusion Matrix',confusionMatrix_cart);
+print('Overall Accuracy',confusionMatrix_cart.accuracy());
+print('Kappa', confusionMatrix_cart.kappa());
+
+
+//-----------------------------------------END---------------------------------------------------------------
