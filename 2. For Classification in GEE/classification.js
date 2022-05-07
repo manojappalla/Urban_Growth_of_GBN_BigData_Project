@@ -142,13 +142,24 @@ for(var a = 1; a <= 5; a++){
 }
 
 //-------------------------------------------SVM Classifier--------------------------------------------
+/*
+7) Rename "classification_1992_svm" depending on the year selected 
+*/
 var classifier_svm= ee.Classifier.libsvm().train({
   features: total_sample,
   classProperty: 'id',
   inputProperties: bands
 });
 
-var classification_1992_svm = image_1992.clip(boundary).select(bands).classify(classifier_svm);
+var classification_1992_svm = image.clip(boundary).select(bands).classify(classifier_svm);
+
+/*
+8) REMOVE imageVisParam, 'Classified 1992' from the code below 
+   Go to Layers in the Map interface and select the setting icon of Layer1 appearing
+   Select "custom" is Range and input "1 to 5"
+   Put the 5 palette colors in the sequence of hex code given above for each consecutive id of the LULC classes
+   import the imageVisParam now in the code below with name of layer as 'Classified *year* svm' seperated by , sign 
+*/
 Map.addLayer(classification_1992_svm.clip(boundary), imageVisParam, 'Classified 1992 svm');
 
 var svmClassifier = ee.Classifier.libsvm().train({
@@ -170,13 +181,24 @@ print('Kappa', confusionMatrix_svm.kappa());
 //-----------------------------------------END---------------------------------------------------------------
 
 //-------------------------------------------CART Classifier--------------------------------------------
+/*
+9) Rename "classification_1992_cart" depending on the year selected 
+*/
 var classifier_cart= ee.Classifier.smileCart(10).train({
   features: total_sample,
   classProperty: 'id',
   inputProperties: bands
 });
 
-var classification_1992_cart = image_1992.clip(boundary).select(bands).classify(classifier_cart);
+var classification_1992_cart = image.clip(boundary).select(bands).classify(classifier_cart);
+
+/*
+8) REMOVE imageVisParam, 'Classified 1992' from the code below 
+   Go to Layers in the Map interface and select the setting icon of Layer1 appearing
+   Select "custom" is Range and input "1 to 5"
+   Put the 5 palette colors in the sequence of hex code given above for each consecutive id of the LULC classes
+   import the imageVisParam now in the code below with name of layer as 'Classified *year* cart' seperated by , sign 
+*/
 Map.addLayer(classification_1992_cart.clip(boundary), imageVisParam, 'Classified 1992 cart');
 
 var cartClassifier = ee.Classifier.smileCart(10).train({
