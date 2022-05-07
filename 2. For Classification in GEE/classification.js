@@ -8,6 +8,7 @@
 3) Import the image_*year* asset from the "Assets" folder 
 Bands selection and rename
 */
+var image = image_1992
 image = image.select(['b1', 'b2', 'b3', 'b4', 'b5', 'b6'])
                        .rename(['blue', 'green', 'red', 'nir', 'swir1', 'swir2']);
                        
