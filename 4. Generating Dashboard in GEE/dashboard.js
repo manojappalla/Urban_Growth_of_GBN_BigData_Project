@@ -439,6 +439,7 @@ var options_selection = ui.Select({
       panel.remove(nightlight_timelapse_label);
       panel.remove(nightlight_link);
       panel.remove(swipe_label);
+      panel.remove(legend_panel);
       panel.add(lulc_label);
       panel.remove(lulc_change_selection);
       ui.root.widgets().reset([panel, main_map]);
@@ -457,6 +458,7 @@ var options_selection = ui.Select({
       panel.remove(nightlight_timelapse_label);
       panel.remove(nightlight_link);
       panel.remove(swipe_label);
+      panel.remove(legend_panel);
       panel.add(lulc_change_label);
       panel.remove(lulc_selection);
       ui.root.widgets().reset([panel, main_map]);
@@ -474,6 +476,7 @@ var options_selection = ui.Select({
       panel.remove(lulc_label);
       panel.remove(lulc_change_label);
       panel.remove(swipe_label);
+      panel.remove(legend_panel);
       panel.add(nightlight_timelapse_label);
       panel.add(nightlight_link)
       panel.remove(lulc_selection);
@@ -494,6 +497,7 @@ var options_selection = ui.Select({
       panel.remove(nightlight_timelapse_label);
       panel.remove(nightlight_link);
       panel.add(swipe_label);
+      panel.add(legend_panel);
       panel.remove(lulc_selection);
       panel.remove(lulc_change_selection);
       
