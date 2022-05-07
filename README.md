@@ -36,14 +36,14 @@ Note:
 
 *IMPORT REQUIRED FILES FROM THE ASSETS FOLDER INTO ASSETS OF GOOGLE EARTH ENGINE DEPENDING ON THE REQUIREMENT
 
-/* classification.js */
+/* download.js (Available in '1. For Downloading Landsat Images in GEE' folder)*/
+This javascript file contains the code to filter the landsat collection and export the images by calculating the median of all the images in the collection.
+
+/* classification.js (Available in '2. For Classification in GEE' folder)*/
 This javascript file contains the code to apply random forest classification, to find the area of each class, and to export the classified image to google drive. Also code for SVM and Cart were also added.
 
-/* change detection.js */
+/* change detection.js (Available in '3. For Change Detection in GEE' folder)*/
 This javascript file contains the code to perform change detection using the change matrix method and to calculate the area of class to class change. This also contains the code to export the image after performing the change detection
 
-/* dashboard.js */
+/* dashboard.js (Available in '4. For Change Detection in GEE' folder)*/
 This code is used to create the dashboard
-
-/* download.js */
-This javascript file contains the code to filter the landsat collection and export the images by calculating the median of all the images in the collection.
